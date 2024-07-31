@@ -1,0 +1,45 @@
+.movie-list-item {
+  width: 450px;
+  height: 280px;
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.movie-list-item__poster {
+  flex: 1;
+}
+
+.movie-list-item__poster img {
+  max-width: 181px;
+}
+
+.movie-list-item__info {
+  max-width: 268px;
+  flex: 1;
+}
+
+.movie-list-item__info h2 {
+  font-size: 20px;
+  line-height: 28px;
+  padding-bottom: 0.5rem;
+}
+
+.movie-list-item__release {
+  color: #827e7e;
+  padding-bottom: 0.5rem;
+}
+
+.movie-genres {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 0.5rem;
+}
+
+.movie-genres li {
+  padding: 0.25rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 14.5px;
+}
