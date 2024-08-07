@@ -1,4 +1,7 @@
 import { Component } from 'react';
+import { Spin, Alert } from 'antd';
+import { Offline, Online } from 'react-detect-offline';
+
 import MovieListItem from '../movie-list-item/MovieListItem';
 import './MovieList.css';
 import MDBService from '../mdb-service';
@@ -29,13 +32,6 @@ export default class MovieList extends Component {
   render() {
     const { movies, error, isLoaded } = this.state;
 
-    if (error) {
-      return <h6>{error.message}</h6>;
-    }
-    if (!isLoaded) {
-      return <h6>LOADING PIDRILA</h6>;
-    }
-
     const moviesArray = movies.map((movie) => (
       <MovieListItem
         key={movie.id}
@@ -48,6 +44,29 @@ export default class MovieList extends Component {
       />
     ));
 
-    return <ul className="movie-list">{moviesArray}</ul>;
+    return (
+      <Spin spinning={!isLoaded}>
+        <Online>
+          <ul className="movie-list">
+            {!error ? (
+              moviesArray
+            ) : (
+              <Alert
+                message="Error"
+                description={`${error.message}`}
+                type="error"
+              />
+            )}
+          </ul>
+        </Online>
+        <Offline>
+          <Alert
+            message="Error"
+            description={`It seems like you're offline`}
+            type="error"
+          />
+        </Offline>
+      </Spin>
+    );
   }
 }

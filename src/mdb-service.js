@@ -12,10 +12,12 @@ export default class MDBService {
 
   async getResource(url) {
     const res = await fetch(url, this.options);
+
     if (!res.ok) {
       throw new Error(`Couldn't fetch ${url}, received ${res.status}`);
     }
     const responseBody = await res.json();
+
     return responseBody;
   }
 
@@ -23,6 +25,8 @@ export default class MDBService {
     const moviesArray = await this.getResource(
       `${this.searchMoviesUrl}${queryRequest}`
     );
+    if (!moviesArray.results.length)
+      throw new Error(`Seems there is no film by your request ${queryRequest}`);
     return moviesArray.results;
   }
 

@@ -11,10 +11,12 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "antd": "^5.20.0",
     "date-fns": "^3.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
+    "react-detect-offline": "^2.4.5",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
